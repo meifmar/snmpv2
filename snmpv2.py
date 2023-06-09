@@ -10,7 +10,7 @@ root = Tk()
 frm = ttk.Frame(root, padding=10)
 frm.grid()
 ttk.Label(frm, text="SNMP Abfragen").grid(column=0, row=0)
-    
+###
 entryIP = Entry(master=root, bg='white').grid(column=0, row=1)
 #result = snmp_get('.1.3.6.1.2.1.1.1.0', hostname='ip', community='public', version=1)  #Diverses Abfrage
 #result1 = snmp_get('.1.3.6.1.2.1.1.5.0', hostname='ip', community='public', version=1) #Hostname Abfrage
