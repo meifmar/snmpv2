@@ -6,7 +6,7 @@ from tkinter import ttk
 
 #TKInter GUI
 
-ip_address = "0.0.0.0"
+#ip_address = "0.0.0.0"
 
 fenster = Tk()
 fenster.title("SNMP Monitor")
@@ -19,21 +19,25 @@ fenster.title("SNMP Monitor")
 
 
 def funcGet():
-    global ip_address
+    ip_address = "0.0.0.0"
     #if (entry_ip.size()>0):
     ip_address = entry_ip.get()
-    snmp_result = snmp_get('.1.3.6.1.2.1.1.5.0', hostname=ip_address, community='public', version=1)
-    snmp_result1 = snmp_get('.1.3.6.1.2.1.1.6.0', hostname=ip_address, community='public', version=1)
-    snmp_result2 = snmp_get('.1.3.6.1.2.1.1.3.0', hostname=ip_address, community='public', version=1)
-    snmp_result3 = snmp_get('.1.3.6.1.2.1.1.1.0', hostname=ip_address, community='public', version=1)
-    label_result.config(text=(snmp_result.value+"= Hostname"))
-    label_result1.config(text=(snmp_result1.value+"= System Aufenthalt"))
-    label_result2.config(text=(snmp_result2.value+"= Uptime"))
-    label_result3.config(text=(snmp_result3.value+"= Betriebssystem"))
-    print (snmp_result.value, "= Hostname")
-    print (snmp_result1.value, "= System Aufenthalt")
-    print (snmp_result2.value, "= Uptime")
-    print (snmp_result3.value, "= Betriebssystem")
+    if ip_address < 0:
+        print (snmp_result.value, "Bitte geben Sie eine neue IP Adresse ein")
+
+    else
+        snmp_result = snmp_get('.1.3.6.1.2.1.1.5.0', hostname=ip_address, community='public', version=1)
+        snmp_result1 = snmp_get('.1.3.6.1.2.1.1.6.0', hostname=ip_address, community='public', version=1)
+        snmp_result2 = snmp_get('.1.3.6.1.2.1.1.3.0', hostname=ip_address, community='public', version=1)
+        snmp_result3 = snmp_get('.1.3.6.1.2.1.1.1.0', hostname=ip_address, community='public', version=1)
+        label_result.config(text=(snmp_result.value+"= Hostname"))
+        label_result1.config(text=(snmp_result1.value+"= System Aufenthalt"))
+        label_result2.config(text=(snmp_result2.value+"= Uptime"))
+        label_result3.config(text=(snmp_result3.value+"= Betriebssystem"))
+        print (snmp_result.value, "= Hostname")
+        print (snmp_result1.value, "= System Aufenthalt")
+        print (snmp_result2.value, "= Uptime")
+        print (snmp_result3.value, "= Betriebssystem")
 
 
 button_abfrage = Button(fenster, text="SNMP Get ausführen", command=funcGet, width=40)
