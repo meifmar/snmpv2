@@ -22,8 +22,9 @@ def funcGet():
     ip_address = "0.0.0.0"
     #if (entry_ip.size()>0):
     ip_address = entry_ip.get()
-    if ip_address < 0:
+    if ip_address <= 0:
         print (snmp_result.value, "Bitte geben Sie eine neue IP Adresse ein")
+        label_result.config(text="Bitte geben Sie eine neue IP Adresse ein")
 
     else
         snmp_result = snmp_get('.1.3.6.1.2.1.1.5.0', hostname=ip_address, community='public', version=1)
