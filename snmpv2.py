@@ -23,7 +23,7 @@ def funcGet():
     #if (entry_ip.size()>0):
     ip_address = entry_ip.get()
     if ip_address <= 0:
-        print (snmp_result.value, "Bitte geben Sie eine neue IP Adresse ein")
+        print ("Bitte geben Sie eine neue IP Adresse ein")
         label_result.config(text="Bitte geben Sie eine neue IP Adresse ein")
 
     else
